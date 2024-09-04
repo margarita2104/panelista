@@ -5,4 +5,6 @@ services:
     registry_type: GHCR
     registry: margarita2104
     repository: panelista
-    digest: ${SAMPLE_DIGEST}
+    tag: latest
+    username: margarita2104
+    password: ${{ secrets.GHCR_TOKEN }}
