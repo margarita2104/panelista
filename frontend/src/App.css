@@ -1,0 +1,27 @@
+#root {
+  font-family: 'Montserrat';
+}
+
+.bg-custom-dark {
+  background-color: #4D455D;
+}
+
+.bg-custom-light {
+  color: #D9D9D9;
+}
+
+.bg-custom-lighter {
+  color: rgba(217, 217, 217, 0.21);
+}
+
+.text-custom-dark {
+  background-color: #4D455D;
+}
+
+.text-custom-light {
+  color: #D9D9D9;
+}
+
+.text-custom-blue {
+  color: #0015FF;
+}

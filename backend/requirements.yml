@@ -1,0 +1,14 @@
+name: panelista
+dependencies:
+  - python
+  - pip
+  - psycopg2
+  - pip:
+      - django
+      - djangorestframework
+      - djangorestframework-simplejwt
+      - flake8
+      - gunicorn
+      - django-cors-headers
+      - pillow
+      - drf-yasg

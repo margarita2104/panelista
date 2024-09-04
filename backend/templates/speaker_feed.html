@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Feed</title>
+</head>
+<body>
+<div id="feed">
+    {% for speaker in speakers %}
+    <div class="speaker">
+        <h2>{{ speaker.user.first_name }} {{ speaker.user.last_name }}</h2>
+        <p>Job Title: {{ speaker.current_job_title }}</p>
+        <p>Career Description: {{ speaker.career_description }}</p>
+        <p>Topics: {{ speaker.topics }}</p>
+        <p>City: {{ speaker.city }}</p>
+        <p>State: {{ speaker.state }}</p>
+        <p>Country: {{ speaker.country }}</p>
+        <p>Willingness to Travel: {{ speaker.willingness_to_travel }}</p>
+        <p>Pronouns: {{ speaker.pronouns }}</p>
+        <p>Birth Year: {{ speaker.birth_year }}</p>
+        <p>Professional Experience: {{ speaker.professional_experience }}</p>
+        <p>Cultural Background: {{ speaker.cultural_background }}</p>
+        <p>Speaker Experience: {{ speaker.speaker_experience }}</p>
+        <p>Languages: {{ speaker.languages }}</p>
+        <p>Engagement Types: {{ speaker.engagement_types }}</p>
+        <p>Max Event Size: {{ speaker.max_event_size }}</p>
+        <p>General Availability: {{ speaker.general_availability }}</p>
+        <p>Contact Preferences: {{ speaker.contact_preferences }}</p>
+        <p>Additional Notes: {{ speaker.additional_notes }}</p>
+        <p><a href="https://panelista.propulsion-learn.ch/speakers/{{ speaker.id }}">https://panelista.propulsion-learn.ch/speakers/{{ speaker.id }}</a></p>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
