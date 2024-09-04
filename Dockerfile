@@ -1,5 +1,5 @@
 FROM continuumio/miniconda3:latest
-LABEL org.opencontainers.image.source=https://github.com/magicmiren/panelista
+LABEL org.opencontainers.image.source=https://github.com/margarita2104/panelista
 #creating folder in the container
 RUN mkdir -p /backend
 RUN mkdir -p /scripts
