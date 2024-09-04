@@ -1,10 +1,8 @@
 name: panelista
 services:
-- name: panelista
-  image:
-    registry_type: GHCR
-    registry: margarita2104
-    repository: panelista
-    tag: latest
-    username: margarita2104
-    password: ${{ secrets.GHCR_TOKEN }}
+  - name: panelista
+    image:
+      registry_type: GHCR
+      registry: margarita2104
+      repository: panelista
+      tag: latest
