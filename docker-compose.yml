@@ -1,6 +1,6 @@
 services:
   backend:
-    image: ghcr.io/magicmiren/panelista:latest
+    image: ghcr.io/margarita2104/panelista:latest
     ports:
       - '8000:8000'
     command: 'sh /scripts/dev.sh'
