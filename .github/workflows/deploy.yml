@@ -36,5 +36,4 @@ jobs:
           SAMPLE_DIGEST: ${{ steps.push.outputs.digest }}
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          
-          
+        
