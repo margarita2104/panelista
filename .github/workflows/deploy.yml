@@ -44,3 +44,4 @@ jobs:
             docker rm panelista || true
             docker run -d --name panelista -p 80:80 ghcr.io/${{ github.repository }}:latest
 
+            
