@@ -37,7 +37,7 @@ jobs:
         
       - name: Deploy Docker image to Droplet
         run: |
-          doctl compute ssh ${{ secrets.DROPLET_IP }} --ssh-command "
+          doctl compute ssh ${{ secrets.DROPLET_ID }} --ssh-command "
             docker pull ghcr.io/${{ github.repository }}:latest
             docker stop panelista || true
             docker rm panelista || true
