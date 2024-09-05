@@ -34,6 +34,12 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Add SSH key
+        run: |
+          echo "${{ secrets.DROPLET_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
         
       - name: Deploy Docker image to Droplet
         run: |
@@ -43,3 +49,4 @@ jobs:
             docker rm panelista || true
             docker run -d --name panelista -p 80:80 ghcr.io/${{ github.repository }}:latest
           "
+          
