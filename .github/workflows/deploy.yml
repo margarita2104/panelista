@@ -30,11 +30,17 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository }}:latest
 
-      - name: Deploy the app
-        uses: digitalocean/app_action/deploy@v2
-        env:
-          SAMPLE_DIGEST: ${{ steps.push.outputs.digest }}
+      - name: Deploy the app to the Droplet
+        uses: appleboy/ssh-action@v0.1.4
         with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          host: ${{ secrets.DROPLET_IP }}
+          username: ${{ secrets.DROPLET_USERNAME }}
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          port: 22
+          script: |
+            docker pull ghcr.io/${{ github.repository }}:latest
+            docker stop panelista || true
+            docker rm panelista || true
+            docker run -d --name panelista -p 80:80 ghcr.io/${{ github.repository }}:latest
         
-          
+
