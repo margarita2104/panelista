@@ -30,18 +30,16 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository }}:latest
 
-      - name: Deploy the app to the Droplet
-        uses: appleboy/ssh-action@v0.1.4
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
         with:
-          debug: true
-          host: ${{ secrets.DROPLET_IP }}
-          username: ${{ secrets.DROPLET_USERNAME }}
-          key: ${{ secrets.DROPLET_SSH_KEY }}
-          port: 22
-          script: |
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+        
+      - name: Deploy Docker image to Droplet
+        run: |
+          doctl compute ssh ${{ secrets.DROPLET_IP }} --ssh-command "
             docker pull ghcr.io/${{ github.repository }}:latest
             docker stop panelista || true
             docker rm panelista || true
             docker run -d --name panelista -p 80:80 ghcr.io/${{ github.repository }}:latest
-
-            
+          "
