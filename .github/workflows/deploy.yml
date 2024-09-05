@@ -36,7 +36,6 @@ jobs:
           host: ${{ secrets.DROPLET_IP }}
           username: ${{ secrets.DROPLET_USERNAME }}
           key: ${{ secrets.DROPLET_SSH_KEY }}
-          password: ${{ secrets.DROPLET_PASSWORD }}
           port: 22
           script: |
             docker pull ghcr.io/${{ github.repository }}:latest
