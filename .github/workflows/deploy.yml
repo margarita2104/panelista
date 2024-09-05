@@ -37,17 +37,16 @@ jobs:
 
       - name: Add SSH key
         run: |
+          mkdir -p ~/.ssh
           echo "${{ secrets.DROPLET_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
-        
+  
       - name: Deploy Docker image to Droplet
         run: |
-          doctl compute ssh ${{ secrets.DROPLET_ID }} --ssh-command "
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }} << 'EOF'
             docker pull ghcr.io/${{ github.repository }}:latest
             docker stop panelista || true
             docker rm panelista || true
             docker run -d --name panelista -p 80:80 ghcr.io/${{ github.repository }}:latest
-          "
-
-          
+          EOF
