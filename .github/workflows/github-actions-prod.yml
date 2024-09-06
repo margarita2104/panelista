@@ -22,7 +22,7 @@ jobs:
     needs: pull
     steps:
       - uses: actions/checkout@v4
-      - run: echo "LC_REPOSITORY=${UC_REPOSITORY,,}" >> ${GITHUB_ENV}
+      - run: echo "LC_REPOSITORY=$(echo ${UC_REPOSITORY} | tr '[:upper:]' '[:lower:]')" >> ${GITHUB_ENV}
         env:
           UC_REPOSITORY: '${{ github.repository }}'
       - run: docker build -t ghcr.io/${LC_REPOSITORY}:main .
