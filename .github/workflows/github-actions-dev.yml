@@ -10,6 +10,7 @@ jobs:
     continue-on-error: true
     steps:
       - run: echo "LC_REPOSITORY=${UC_REPOSITORY,,}" >> ${GITHUB_ENV}
+        shell: bash
         env:
           UC_REPOSITORY: '${{ github.repository }}'
       - run: docker pull ghcr.io/${LC_REPOSITORY}:latest
