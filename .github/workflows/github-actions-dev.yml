@@ -40,7 +40,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo "LC_REPOSITORY=${UC_REPOSITORY,,}" >> ${GITHUB_ENV}
+      - run: echo "LC_REPOSITORY=$(echo ${UC_REPOSITORY} | tr '[:upper:]' '[:lower:]')" >> ${GITHUB_ENV}
         env:
           UC_REPOSITORY: '${{ github.repository }}'
       - run: docker tag "${GITHUB_SHA}:${GITHUB_REF_NAME}" ghcr.io/${LC_REPOSITORY}:latest
