@@ -1,0 +1,49 @@
+name: Main
+run-name: ${{ github.sha }}
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pull:
+    runs-on: self-hosted
+    continue-on-error: true
+    steps:
+      - run: echo "LC_REPOSITORY=${UC_REPOSITORY,,}" >> ${GITHUB_ENV}
+        env:
+          UC_REPOSITORY: '${{ github.repository }}'
+      - run: docker pull ghcr.io/${LC_REPOSITORY}:latest
+
+  build:
+    runs-on: self-hosted
+    needs: pull
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "LC_REPOSITORY=${UC_REPOSITORY,,}" >> ${GITHUB_ENV}
+        env:
+          UC_REPOSITORY: '${{ github.repository }}'
+      - run: docker build -t ghcr.io/${LC_REPOSITORY}:main .
+
+  push-main:
+    runs-on: self-hosted
+    needs: build
+    permissions: write-all
+    steps:
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo "LC_REPOSITORY=${UC_REPOSITORY,,}" >> ${GITHUB_ENV}
+        env:
+          UC_REPOSITORY: '${{ github.repository }}'
+      - run: docker push ghcr.io/${LC_REPOSITORY}:main
+
+  deploy:
+    runs-on: self-hosted
+    needs: push-main
+    steps:
+      - run: docker compose -f docker-compose.deploy.yml pull
+      - run: docker compose -f docker-compose.deploy.yml down --remove-orphans
+      - run: docker compose -f docker-compose.deploy.yml up -d

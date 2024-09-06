@@ -30,7 +30,7 @@ services:
       - static_files:/static-files
       - media_files:/media-files
       - ./nginx:/etc/nginx/conf.d/
-      - /etc/letsencrypt:/etc/letsencrypt
+      # - /etc/letsencrypt:/etc/letsencrypt
       - frontend_build:/frontend_build
 
 
