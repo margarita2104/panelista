@@ -36,10 +36,11 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
       - name: Add SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.DROPLET_SSH_KEY }}
-          known_hosts: ${{ secrets.DROPLET_IP }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DROPLET_SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
   
       - name: Deploy Docker image to Droplet
         run: |
