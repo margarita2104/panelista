@@ -31,8 +31,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://panelista.propulsion-learn.ch",
-    "http://142.93.109.146",
+    "http://165.22.69.162",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
