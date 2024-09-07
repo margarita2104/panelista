@@ -53,8 +53,6 @@ INSTALLED_APPS = [
     'organizer',
     'event',
     'review',
-    'chatbot',
-
 ]
 
 MIDDLEWARE = [
