@@ -14,7 +14,7 @@ const HomePage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 pl-20 pr-28">
           <div className="mr-14">
             <p className="mb-8 text-xl">
-              AMore diversity on stages. Because you can not be what you can not see.
+              More diversity on stages. Because you can not be what you can not see.
             </p>
             <p className="text-xl">
               With <strong>panelista</strong>, our aim is to provide access to a
