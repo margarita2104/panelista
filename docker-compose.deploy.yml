@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    image: ghcr.io/margarita2104/panelista:latest
+    image: ghcr.io/margarita2104/panelista:main
     command: 'sh /scripts/prod.sh'
     env_file:
       - ./envs/prod.env
