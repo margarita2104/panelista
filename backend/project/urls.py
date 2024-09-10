@@ -55,8 +55,6 @@ urlpatterns = [
     path('backend/api/events/', include('event.urls')),
     # reviews
     path('backend/api/reviews/', include('review.urls')),
-    # chatbot
-    path('backend/api/chat/', include('chatbot.urls')),
 ]
 
 if settings.DEBUG:
