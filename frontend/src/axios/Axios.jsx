@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const BASE_URL = (window.location.hostname === 'localhost')
         ? 'http://localhost:8000/backend/api'
-        : 'https://panelista.propulsion-learn.ch/backend/api'
+        : 'http://165.227.169.118/backend/api'
 
 export const AxiosPanelista = axios.create({
   baseURL: BASE_URL,
