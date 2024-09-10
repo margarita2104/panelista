@@ -14,7 +14,6 @@ const RegistrationSuccess = () => {
 
                     <p>Thank you for registering!</p>
                     <p>We have sent a confirmation code to your email</p>
-                    <p>johnsmith@gmail.com</p>
 
                     <Link to="/registration/validation">
                         <button className="btn mt-8">Continue</button>
