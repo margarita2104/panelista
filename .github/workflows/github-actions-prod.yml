@@ -48,5 +48,7 @@ jobs:
     steps:
       - run: docker compose -f docker-compose.deploy.yml pull
       - run: docker compose -f docker-compose.deploy.yml down --remove-orphans
+      - run: docker volume rm panelista_frontend_build || true
       - run: docker compose -f docker-compose.deploy.yml up -d
-      
+
+
