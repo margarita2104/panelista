@@ -31,7 +31,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://165.227.169.118",
+    "http://167.172.101.0",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
