@@ -1,5 +1,7 @@
 # **Panelista Project Documentation**
 
+help
+
 ## **1. Project Overview**
 
 **Panelista** is a web application designed to assist event organizers in finding diverse speakers. The project includes a Django-based backend and a React-based frontend. It uses PostgreSQL as its database and is containerized with Docker to facilitate easy deployment.
